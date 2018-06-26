@@ -1,0 +1,23 @@
+.wel{
+    color:floralwhite;
+    text-align:center;
+}
+
+@media all and (min-width: 148px) {
+    .Login {
+        padding: 50px ;
+        text-align: left;
+        background-color: white;
+      }
+
+    .Login-form {
+      width: 20%;
+      border-radius: 5px!important;
+      padding: 5px !important;
+      margin: auto!important;
+      margin-top: 100px!important;
+      background-color:whitesmoke!important;
+      text-align: center !important;
+      z-index: 1;
+      }
+  }

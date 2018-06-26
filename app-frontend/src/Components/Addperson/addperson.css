@@ -1,0 +1,46 @@
+@media all and (min-width: 148px) {
+
+    .Modal-form {
+      width: 20%;
+      border-radius: 5px!important;
+      padding: 5px !important;
+      margin: auto!important;
+      margin-top: 20px!important;
+      background-color:whitesmoke!important;
+      text-align: center !important;
+      z-index: 1;
+      }
+  }
+
+  button{
+    text-align: center
+  }
+  
+.person {
+  max-width: 700px;
+  margin: auto;
+  height: 450px;
+  overflow: scroll;
+  float: center!important;
+}
+/* 
+@media (min-width : 500px ) and (min-height : 400px) {
+  .person{
+      width: 350px;
+      height: 300px;
+  }
+} */
+
+/* @media (min-width : 500px ) and (min-height : 401px) {
+  .person{
+      width: 450px;
+      height: 400px;
+  }
+} */
+
+/* @media (min-width : 1000px ) and (min-height : 700px) {
+  .person{
+      width: 700px;
+      height: 600px;
+  }
+} */

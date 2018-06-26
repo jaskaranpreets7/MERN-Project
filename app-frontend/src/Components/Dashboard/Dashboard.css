@@ -1,0 +1,26 @@
+
+.flex-container{
+    display: flex;
+    flex-flow:row wrap;
+    /* flex-direction: column; */
+    justify-content: space-around;
+}
+.flex-item {
+  background-color:cornflowerblue;
+  padding: 5px;
+  width: 150px;
+  height: 90px;
+  margin-top: 10px;
+  border-radius: 5px;
+
+  line-height: 100px;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+}
+.flex-item:hover {
+  background-color: #EEE;
+  cursor: pointer;
+  color: #607d8b
+}

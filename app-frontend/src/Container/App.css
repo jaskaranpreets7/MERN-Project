@@ -1,0 +1,40 @@
+body {
+  width: 100%;
+  /* height: 100%; */
+  background-image:url('../Assets/wallpaper.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 25px;
+}
+
+.App-header {
+  background-color:brown
+  
+}
+
+.App-title {
+  font-size: 1.5em;
+  color:whitesmoke
+}
+
+.App-intro {
+  font-size: 2em;
+  color: blanchedalmond;
+  text-align: center
+}
+.class {
+  margin: auto!important;
+  /* margin-right: 1000!important; */
+   /* display: flex;
+   align-content: flex-end;
+   flex-grow: 1; */
+}
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
