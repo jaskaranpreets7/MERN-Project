@@ -19,7 +19,7 @@ router.route('/person')
         });
     })
 
-
+//add person 
 router.route('/addperson').post(function(req,res){
     var doc = {id: req.body.id, name: req.body.name , username: req.body.username, email: req.body.email, age: req.body.age}
     Person.insertMany(doc,function(err) {

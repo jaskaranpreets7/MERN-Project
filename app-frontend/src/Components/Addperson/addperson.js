@@ -4,6 +4,9 @@ import axios from 'axios';
 
 import {Link} from "react-router-dom";
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+// import { getPerson }  from '../../store/Action';
+import * as actionCreators from "../../store/Action.js"
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -29,7 +32,7 @@ import './addperson.css';
 class AddPerson extends Component {
   constructor(props){
     super(props);
-    // console.log('addperson ' , this.props.props)
+    console.log('addperson props' , this.props)
     this.state = {
       persons: [{
         name : String,
@@ -107,13 +110,14 @@ class AddPerson extends Component {
   }
 
   componentDidMount(){
-    axios.get('http://localhost:7777/person')
-    .then(res => {
-      let person = res.data;
-      // console.log('res' , res)
-      // console.log('res.data' , res.data.data)
-      this.setState({ persons : person.data });
-    })
+    // axios.get('http://localhost:7777/person')
+    // .then(res => {
+    //   let person = res.data;
+    //   // console.log('res' , res)
+    //   // console.log('res.data' , res.data.data)
+    //   this.setState({ persons : this.props.per });
+    // })
+    this.props.getPerson;
     
   }
 
@@ -222,12 +226,12 @@ class AddPerson extends Component {
                 <TableBody>
                     {this.state.persons.map((person, id) => {
                         return (
-                                <TableRow key={person.id} onDragStart={(e)=>this.onDragStart(e, person.name)} onDrop={(e)=>{this.onDrop(e, "admin")}}>
+                                <TableRow key={person.id}>
                                     <TableCell component="th" scope="row">{person.name}</TableCell>
                                     <TableCell component="th" scope="row">{person.email}</TableCell>
                                     <TableCell component="th" scope="row">{person.age}</TableCell>
                                     <TableCell component="th" scope="row">{person.username}</TableCell>
-                                    <TableCell component="th" scope="row"><Button color="secondary" onClick={()=>{this.deletePerson(id)}}><Icon>delete</Icon></Button></TableCell>
+                                    {/* <TableCell component="th" scope="row"><Button color="secondary" onClick={()=>{this.deletePerson(id)}}><Icon>delete</Icon></Button></TableCell> */}
                                 </TableRow>
                             )
                             })}
@@ -236,31 +240,16 @@ class AddPerson extends Component {
             </Paper>
             <br/>
             <center><Button onClick={this.handleOpen}  variant="contained" color="primary">Add Person</Button></center>
-            {/* <Paper>
-              <Table className='table'>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Name</TableCell>
-                            <TableCell>Email</TableCell>
-                            <TableCell>Age</TableCell>
-                            <TableCell>Username</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      <TableRow onDragOver={(e)=>this.onDragOver(e)} onDrop={(e)=>this.onDrop(e, "user")}>
-                      </TableRow>
-                    </TableBody>
-              </Table>
-            </Paper> */}
+            
       </div>
     )
   }
 }
 const mapStatetoProps = state => {
-    return {
-        per : state.person
-    };
+    return state
 };
+// const mapDispatchtoProps = dispatch => {
+//   return bindActionCreators({ getPerson : getPerson});
+// }
 
-
-export default AddPerson;
+export default connect(mapStatetoProps ,actionCreators.getPerson)(AddPerson);

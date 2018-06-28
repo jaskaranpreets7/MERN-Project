@@ -1,22 +1,21 @@
 import axios from 'axios';
+const GET_PERSON = 'GET_PERSON';
 
-function getPerson(persons){
+export function getPerson(){
     console.log('**before call in action')
-    axios.get('http://localhost:7777/person')
-        .then(function(res){
-            console.log('action ' , res);
-            return {
-                type: 'GET_PERSON',
-                payload: res.data
-            }
-        })
-        .catch(function (error) { 
-            console.log(error);
-            return {
-              type: 'GET_PERSON_ERROR',
-              payload: error
-            };
-          })
-  
-};
- export default getPerson;
+    return function(dispatch) {
+        axios.get('http://localhost:7777/person')
+        // .then(response  => response.json())
+        .then(response => dispatch({
+            type: GET_PERSON,
+            person : response.data.data
+        }))
+    }
+}
+// const disPerson = (person) => {
+//     return {
+//         type: 'GET_PERSON',
+//         person : person
+//     }
+// }
+// export default getPerson

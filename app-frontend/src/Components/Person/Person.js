@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 
-import getPerson from '../../store/Action';
+// import getPerson from '../../store/Action';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -37,7 +37,7 @@ const styles = theme => ({
 class Person extends Component{
     constructor( props ) {
         super( props );
-        console.log( '[Person.js] Inside Constructor',this.props );
+        console.log( '[Person.js] Inside Constructor', this.props );
         this.state = {
             searchPerson : [],
             showperson: true
@@ -85,20 +85,21 @@ class Person extends Component{
         return(
         <div>
             {/* <AddPerson per={this.props.person} props={this.props}/> */}
-            <AddPerson/>
+            <AddPerson props={this.props}/>
+            
          </div>     
     ); 
     }
 };
 //{/* <Button  type="submit" onClick={this.togglePerson}>Toggle</Button><br/> */}
 //{/* <SearchBar handler={this.searchItem}/> */}
-function mapStatetoProps(state){
-    return {
-        person : state.person
-    };
-};
-function matchDispatchToProps(dispatch){
-    return bindActionCreators({getPerson: getPerson}, dispatch);
-}
+// function mapStatetoProps(state){
+//     return {
+//         person : state.person
+//     };
+// };
+// function matchDispatchToProps(dispatch){
+//     return bindActionCreators({getPerson: getPerson}, dispatch);
+// }
 
-export default  connect(mapStatetoProps,matchDispatchToProps) (Person);
+export default Person;
