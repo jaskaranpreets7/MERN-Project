@@ -63,7 +63,7 @@ class Login extends Component{
         console.log("history:", this.props);
 
         this.props.history.push({
-            pathname : "/"
+            pathname : "/person"
         })
     }
 
@@ -75,37 +75,35 @@ class Login extends Component{
 
         return(
        
-      <div className="Login-form Login">
-      <h2>Login Form</h2>
+            <div className="Login-form Login">
+                <h2>Login Form</h2>
 
-      <form onSubmit={this.handleSubmit}>
-        <FormGroup  bsSize="large">
-          <ControlLabel>Email</ControlLabel>
-          <FormControl
-            type="email"
-            id="email"
-            onChange={this.handleEmail}
-          />
-        </FormGroup>
-        <FormGroup  bsSize="large">
-          <ControlLabel>Password</ControlLabel>
-          <FormControl
-            onChange={this.handlePass}
-            type="password"
-            id="pass"
-          />
-        </FormGroup>
-        <Button
-          block
-          bsSize="large"
-          type="submit"
-          onClick={() => {this.changeName()}}
-          > Login </Button><br/>
-        
-      </form>
-      <div><i>Create your account?</i> <a href=''>Sign Up</a></div>
-    </div>
-  
+                <form onSubmit={this.handleSubmit}>
+                    <FormGroup  bsSize="large">
+                    <ControlLabel>Email</ControlLabel>
+                    <FormControl
+                        type="email"
+                        id="email"
+                        onChange={this.handleEmail}
+                    />
+                    </FormGroup>
+                    <FormGroup  bsSize="large">
+                    <ControlLabel>Password</ControlLabel>
+                    <FormControl
+                        onChange={this.handlePass}
+                        type="password"
+                        id="pass"
+                    />
+                    </FormGroup>
+                    <Button
+                    block
+                    bsSize="large"
+                    type="submit"
+                    onClick={this.changeName}
+                    > Login </Button><br/>
+                </form>
+                <div><i>Create your account?</i> <a href=''>Sign Up</a></div>
+            </div>
   
         )
     }

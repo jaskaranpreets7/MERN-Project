@@ -6,10 +6,9 @@ import Welcome from '../Components/Welcome/welcome';
 import asyncComponent from '../hoc/asyncComponent';
 import Person from '../Components/Person/Person';
 import Login from '../Components/Login/Login';
-import Comp from '../Components/Comp/Comp';
 import Dashboard from '../Components/Dashboard/Dashboard';
 import Footer from '../Components/Common/Footer/Footer';
-import AddPerson from '../Components/Addperson/addperson';
+import AddPerson from '../Components/Person/Addperson/addperson';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -63,18 +62,15 @@ class App extends Component {
               <NavLink to="/dashboard" activeClassName='selected' activeStyle={{color : 'black'}}><Button variant='flat'>Dashboard</Button></NavLink>
             </Typography> 
             {/* <NavLink to="/login"><Button variant='flat'>Login</Button></NavLink> */}
-            <Menu>
-                  <MenuItem>Logout</MenuItem>
-                </Menu>
           </Toolbar>
         </AppBar>
         </div>
         <Switch>
           {/* {this.state.auth ?<Route path="/Login" component={Login} /> : null} */}
-          <Route path="/" exact component={Welcome} />
-          <Route path="/person" component={AddPerson}/>
+          <Route path="/" exact component={Login} />
+          <Route path="/person" component={Person}/>
           <Route path="/home" component={Home}  />
-          <Route path="/login" component={Login} />
+          {/* <Route path="/login" component={Login} /> */}
           <Route path="/dashboard" component={Dashboard}/>
           <Route render={()=> <h1 className='App-intro'>Page Not Found</h1>}/>
           {/* <Redirect from="/" to="/Welcome" /> */}

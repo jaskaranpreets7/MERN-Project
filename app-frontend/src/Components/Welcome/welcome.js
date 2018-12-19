@@ -99,7 +99,8 @@ class Welcome extends Component {
           </div>
         </Modal>
     </div>
-    )}
+    )
+}
     
 }
 

@@ -5,8 +5,8 @@ import axios from 'axios';
 import {Link} from "react-router-dom";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import { getPerson }  from '../../store/Action';
-import * as actionCreators from "../../store/Action.js"
+
+// import * as actionCreators from "../../Actions/Action";
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -24,7 +24,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import SearchBar from '../Common/SearchBar/SearchBar';
+import SearchBar from '../../Common/SearchBar/SearchBar';
 
 
 import './addperson.css';
@@ -32,14 +32,15 @@ import './addperson.css';
 class AddPerson extends Component {
   constructor(props){
     super(props);
-    console.log('addperson props' , this.props)
+
     this.state = {
+      ...props,
       persons: [{
         name : String,
         email :String, 
         username : String,
         age :  Number,
-        _id:'',
+        id:'',
         category : ''
       }],
       open: false,
@@ -47,11 +48,9 @@ class AddPerson extends Component {
       
     }
   }
-  // persons = this.props.per 
-
   // deleting the persons by clicking 
     deletePerson = (personIndex ) => {
-        const person = [...this.state.persons]
+        const person = [...this.props.persons]
         person.splice(personIndex , 1);
         this.setState({
           persons : person
@@ -65,15 +64,6 @@ class AddPerson extends Component {
   //     .then(res => {
   //       console.log(res.data)
   //     });
-  // }
-
-// clickPerson = (id) => {
-//   console.log(id)
-//   console.log('click' ,this.props)
-//     this.props.props.history.push({
-//         pathname : '/person/:'+ id
-//     })
-    
   // }
 
   handleClose = () => {
@@ -113,21 +103,25 @@ class AddPerson extends Component {
     // axios.get('http://localhost:7777/person')
     // .then(res => {
     //   let person = res.data;
-    //   // console.log('res' , res)
-    //   // console.log('res.data' , res.data.data)
-    //   this.setState({ persons : this.props.per });
+      
+    //   this.setState({ persons : person.data});
     // })
-    this.props.getPerson;
+    // let person = this.props.props.getPerson()
     
   }
 
   searchItem = (e) => {
     let term = e.target.value;
     this.setState({
-        searchPerson :  this.state.persons.filter(el => el.name.includes(term))
+        searchPerson :  this.props.persons.filter(el => el.name.includes(term))
     })
     // this.searchPrint();
-} 
+  }
+  searchPrint = () =>{
+    if(this.props.searchPerson.length > 0){
+        console.log(this.props.searchPerson)
+    }
+  } 
 
   //adding person 
   addPerson = () => {
@@ -154,8 +148,7 @@ class AddPerson extends Component {
     }
 
   render() {
-   
-   
+ 
     return (
    <div>
         {/* <SearchBar handler={this.searchItem}/><br/> */}
@@ -212,7 +205,8 @@ class AddPerson extends Component {
             </div>
             </form>
           </div>
-        </Modal><br/>
+        </Modal>
+        <br/>
         <Paper className='root person'>
                 <Table className='table'>
                     <TableHead>
@@ -224,32 +218,25 @@ class AddPerson extends Component {
                         </TableRow>
                     </TableHead>
                 <TableBody>
-                    {this.state.persons.map((person, id) => {
+                    { this.props.persons.map((person) => {
                         return (
                                 <TableRow key={person.id}>
                                     <TableCell component="th" scope="row">{person.name}</TableCell>
                                     <TableCell component="th" scope="row">{person.email}</TableCell>
                                     <TableCell component="th" scope="row">{person.age}</TableCell>
                                     <TableCell component="th" scope="row">{person.username}</TableCell>
-                                    {/* <TableCell component="th" scope="row"><Button color="secondary" onClick={()=>{this.deletePerson(id)}}><Icon>delete</Icon></Button></TableCell> */}
+                                    <TableCell component="th" scope="row"><Button color="secondary" onClick={()=>{this.deletePerson()}}><Icon>delete</Icon></Button></TableCell>
                                 </TableRow>
-                            )
-                            })}
+                            );
+                            })};
                 </TableBody>
                 </Table>
             </Paper>
             <br/>
             <center><Button onClick={this.handleOpen}  variant="contained" color="primary">Add Person</Button></center>
-            
       </div>
-    )
-  }
-}
-const mapStatetoProps = state => {
-    return state
+    );
+  };
 };
-// const mapDispatchtoProps = dispatch => {
-//   return bindActionCreators({ getPerson : getPerson});
-// }
 
-export default connect(mapStatetoProps ,actionCreators.getPerson)(AddPerson);
+export default AddPerson;
