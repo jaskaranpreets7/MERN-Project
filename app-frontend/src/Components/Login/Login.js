@@ -1,18 +1,11 @@
 import React, {Component} from 'react';
-import {Bootstrap , Button, Glyphicon, FormGroup,ControlLabel,FormControl} from 'react-bootstrap';
-
-import axios from 'axios';
-import { connect } from 'react-redux';
-
-
-import Person from  '../Person/Person'
+import { Button,  FormGroup,ControlLabel,FormControl} from 'react-bootstrap';
 
 import './Login.css'
 
 class Login extends Component{
     constructor(props){
         super(props)
-        // console.log("login component in LOGIN.JS" ,this.props)
         this.state = {
             email: '',
             password :'',
@@ -69,10 +62,6 @@ class Login extends Component{
 
     render(){
         
-        const {password} = this.state;
-        const { eml } = this.props
-        // console.log("login render in LOGIN.JS " , this.props)
-
         return(
        
             <div className="Login-form Login">

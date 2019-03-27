@@ -1,8 +1,20 @@
-.person{
+/* .person{
     max-width: 100% !important;
     margin:  10px auto!important;
     padding: 1px!important;
     text-align: center!important;
     overflow: auto;
     float: left;
+} */
+  
+.person {
+    max-width: 700px;
+    margin: auto;
+    height: 450px;
+    overflow: scroll;
+    float: center!important;
+  }
+
+.delete{
+    text-align: center !important;
 }

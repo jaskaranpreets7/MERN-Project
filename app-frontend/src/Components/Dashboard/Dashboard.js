@@ -1,24 +1,48 @@
-import React, { Component } from 'react';
-import './Dashboard.css'
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
 
-const Dashboard = () =>  {
+import './Dashboard.css';
+import { fetchPersons } from '../../actions';
 
-  return (
-    <div>
-    <div className='flex-container'>
-      <div className='flex-item'><p>user1</p></div>
-      <div className='flex-item'><p>user2</p></div>
-      <div className='flex-item'><p>user3</p></div>
-      <div className='flex-item'><p>user4</p></div>
-      <div className='flex-item'><p>user5</p></div>
-      <div className='flex-item'><p>user6</p></div>
-      <div className='flex-item'><p>user7</p></div>
-    </div>
- </div>
+class Dashboard extends Component {
 
-  )
+  componentDidMount(){
+    this.props.fetchPersons();
+  }
 
+  renderList = () => {
+    return this.props.persons.map((person) => {
+      return (
+        <a className="red card card-size" key={person._id}>
+          <div className="content">
+            <h5 className="header">{person.name}</h5>
+            <div className="meta">
+              <span>{person.age}</span>
+            </div>
+            <div className="description">
+              <span>{person.email}</span>
+            </div>
+          </div> 
+        </a>
+       
+      )
+    })
+  }
+
+  render(){
+
+    return (
+        <div className="ui cards card-padding">
+            {this.renderList()}
+        </div>
+    )
+  }
 }
+const mapStatetoProps = state => {
+  return {
+      persons : state.persons
+  };
+};
 
-export default Dashboard;
+export default connect(mapStatetoProps, {fetchPersons}) (Dashboard);
 
