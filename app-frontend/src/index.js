@@ -1,20 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Store from './Store/index'
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Link, BrowserRouter } from "react-router-dom";
+import { BrowserRouter as BrowserRouter } from "react-router-dom";
+import { createStore , applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
 
 import './index.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import App from './container/App';
+import reducers from './reducers';
 
-import axios from 'axios';
-
-import App from './Container/App';
-import registerServiceWorker from './registerServiceWorker';
-
-// axios.defaults.baseURL = 'http://localhost:7777';
+const store = createStore( reducers,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunk));
 
 
-
-ReactDOM.render(<BrowserRouter><Provider store={Store}><App/></Provider></BrowserRouter>, document.getElementById('root'));
-registerServiceWorker();
+ReactDOM.render(<BrowserRouter><Provider store={store}><App/></Provider></BrowserRouter>, document.getElementById('root'));

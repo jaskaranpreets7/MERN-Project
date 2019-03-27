@@ -1,28 +1,20 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router , NavLink , Route, Switch, Redirect,withRouter} from 'react-router-dom'
-import {connect} from 'react-redux'
+import {BrowserRouter as Router , NavLink , Route, Switch, Redirect,withRouter} from 'react-router-dom';
 
-import Welcome from '../Components/Welcome/welcome';
-import asyncComponent from '../hoc/asyncComponent';
-import Person from '../Components/Person/Person';
-import Login from '../Components/Login/Login';
-import Dashboard from '../Components/Dashboard/Dashboard';
-import Footer from '../Components/Common/Footer/Footer';
-import AddPerson from '../Components/Person/Addperson/addperson';
+import Person from '../components/Person/Person';
+import Login from '../components/Login/Login';
+import Dashboard from '../components/Dashboard/Dashboard';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-
 
 
 import logo from '../Assets/logo.svg';
 import './App.css';
-import Home from '../Components/Home/Home';
+import Home from '../components/Home/Home';
 
 const styles = {
   root: {
@@ -51,8 +43,8 @@ class App extends Component {
 
     return (
     <Router>
-      <div className='App'>
-       <div className={classes.root}> 
+      <div className="ui container">
+       <div> 
          <AppBar color='primary' position='sticky'>
           <Toolbar>
             <Typography className={classes.flex}>
@@ -64,7 +56,7 @@ class App extends Component {
             {/* <NavLink to="/login"><Button variant='flat'>Login</Button></NavLink> */}
           </Toolbar>
         </AppBar>
-        </div>
+        </div><br/>
         <Switch>
           {/* {this.state.auth ?<Route path="/Login" component={Login} /> : null} */}
           <Route path="/" exact component={Login} />
@@ -75,7 +67,7 @@ class App extends Component {
           <Route render={()=> <h1 className='App-intro'>Page Not Found</h1>}/>
           {/* <Redirect from="/" to="/Welcome" /> */}
         </Switch>
-        <Footer/>
+        
       </div>
     </Router>
     );

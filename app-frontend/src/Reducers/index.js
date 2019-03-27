@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import getPerson  from './Reducer'
+import fetchPersons from './personReducer'
 
 export default combineReducers({
-    getPerson
+    persons: fetchPersons
 });
